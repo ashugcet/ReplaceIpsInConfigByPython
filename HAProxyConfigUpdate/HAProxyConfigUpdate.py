@@ -48,9 +48,9 @@ print("\nUnmatched IPs:",unmatchedips)
 
 if len(unmatchedips) > 0:
  with open("ectd.config","r+") as etcdconfig_to_be_changed:
-  new_etcdconfig = etcdconfig_to_be_changed.readlines()
+  etcdconfig_clone = etcdconfig_to_be_changed.readlines()
   etcdconfig_to_be_changed.seek(0)
-  for line in new_etcdconfig:
+  for line in etcdconfig_clone:
    if "k8s-master-" not in line:
     etcdconfig_to_be_changed.write(line)
   etcdconfig_to_be_changed.truncate()
